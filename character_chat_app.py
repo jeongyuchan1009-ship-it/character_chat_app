@@ -13,253 +13,185 @@ st.set_page_config(
 
 custom_css = """
     <style>
-        @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 0, 255, 0.5), 0 0 40px rgba(0, 255, 255, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(255, 0, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.5); }
-        }
-
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(255, 100, 200, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(255, 100, 200, 1), 0 0 60px rgba(100, 200, 255, 0.6); }
-        }
-
         * {
             box-sizing: border-box;
         }
 
         html, body, [data-testid="stAppViewContainer"] {
-            background: linear-gradient(-45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ffbe0b);
-            background-size: 400% 400%;
-            animation: gradient-shift 15s ease infinite;
+            background: #f8f9fa;
             min-height: 100vh;
         }
 
         [data-testid="stMainBlockContainer"] {
             background: transparent;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             padding-bottom: 2rem;
         }
 
         h1 {
-            background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5, #ff006e);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 3.5rem !important;
-            font-weight: 900 !important;
-            margin-bottom: 2rem !important;
+            color: #2d3748 !important;
+            font-size: 3rem !important;
+            font-weight: 800 !important;
+            margin-bottom: 1.5rem !important;
             text-align: center;
-            letter-spacing: -1px;
-            animation: gradient-shift 4s ease infinite;
-            text-shadow: 0 0 30px rgba(255, 100, 200, 0.3);
         }
 
         h2, h3 {
-            background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 800 !important;
-            letter-spacing: -0.5px;
-            animation: gradient-shift 6s ease infinite;
+            color: #2d3748 !important;
+            font-weight: 700 !important;
         }
 
         .stButton>button {
-            background: linear-gradient(135deg, #ff006e 0%, #8338ec 25%, #3a86ff 50%, #06ffa5 75%, #ffbe0b 100%) !important;
-            background-size: 300% 300%;
-            animation: gradient-shift 3s ease infinite;
+            background: #6366f1 !important;
             color: white !important;
-            border: 3px solid rgba(255, 255, 255, 0.5) !important;
-            border-radius: 20px !important;
-            padding: 1rem 2.5rem !important;
-            font-weight: 800 !important;
-            font-size: 1.05rem !important;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1) !important;
-            box-shadow: 0 0 30px rgba(255, 0, 200, 0.6),
-                        0 0 60px rgba(51, 56, 236, 0.4),
-                        inset 0 0 20px rgba(255, 255, 255, 0.2) !important;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border: none !important;
+            border-radius: 12px !important;
+            padding: 0.85rem 1.8rem !important;
+            font-weight: 700 !important;
+            font-size: 0.98rem !important;
+            transition: all 0.3s ease !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3) !important;
         }
 
         .stButton>button:hover {
-            transform: translateY(-6px) scale(1.05) !important;
-            box-shadow: 0 0 50px rgba(255, 0, 200, 0.8),
-                        0 0 80px rgba(51, 56, 236, 0.6),
-                        inset 0 0 30px rgba(255, 255, 255, 0.3) !important;
-            animation: pulse-glow 0.5s ease-in-out infinite !important;
+            background: #4f46e5 !important;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4) !important;
         }
 
         .stButton>button:active {
-            transform: translateY(-3px) scale(0.98) !important;
+            transform: translateY(-1px) !important;
         }
 
         .stTextInput>div>div>input {
-            border-radius: 15px !important;
-            border: 3px solid rgba(255, 100, 200, 0.6) !important;
-            padding: 1rem 1.5rem !important;
+            border-radius: 10px !important;
+            border: 2px solid #e0e7ff !important;
+            padding: 0.9rem 1.2rem !important;
             font-size: 1rem !important;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85)) !important;
+            background-color: white !important;
+            color: #1f2937 !important;
             transition: all 0.3s ease !important;
-            box-shadow: 0 0 20px rgba(255, 100, 200, 0.3) !important;
         }
 
         .stTextInput>div>div>input:focus {
-            border-color: #06ffa5 !important;
-            box-shadow: 0 0 30px rgba(6, 255, 165, 0.6),
-                        0 0 60px rgba(255, 0, 200, 0.4) !important;
-            background: white !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
         }
 
         .stInfo, .stSuccess, .stError, .stWarning {
-            border-radius: 20px !important;
-            padding: 1.5rem !important;
-            border-left: 6px solid !important;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
-            border: 2px solid rgba(255, 255, 255, 0.3) !important;
-            backdrop-filter: blur(10px);
+            border-radius: 12px !important;
+            padding: 1.2rem !important;
+            border-left: 5px solid !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
         }
 
         .stInfo {
-            background: linear-gradient(135deg, rgba(58, 134, 255, 0.2), rgba(6, 255, 165, 0.1)) !important;
-            border-left-color: #3a86ff !important;
+            background-color: #eef2ff !important;
+            border-left-color: #6366f1 !important;
+            color: #1f2937 !important;
         }
 
         .stSuccess {
-            background: linear-gradient(135deg, rgba(6, 255, 165, 0.2), rgba(255, 190, 11, 0.1)) !important;
-            border-left-color: #06ffa5 !important;
+            background-color: #f0fdf4 !important;
+            border-left-color: #10b981 !important;
+            color: #1f2937 !important;
         }
 
         .stError {
-            background: linear-gradient(135deg, rgba(255, 0, 110, 0.2), rgba(255, 100, 200, 0.1)) !important;
-            border-left-color: #ff006e !important;
+            background-color: #fef2f2 !important;
+            border-left-color: #ef4444 !important;
+            color: #1f2937 !important;
         }
 
         .card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
-            border-radius: 25px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2),
-                        0 0 40px rgba(255, 0, 200, 0.3),
-                        inset 0 0 30px rgba(255, 255, 255, 0.5);
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-            border: 2px solid rgba(255, 100, 200, 0.3);
-            backdrop-filter: blur(20px);
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
         }
 
         .card:hover {
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3),
-                        0 0 60px rgba(255, 0, 200, 0.5),
-                        inset 0 0 30px rgba(255, 255, 255, 0.6);
-            transform: translateY(-8px) scale(1.02);
-            animation: glow 1.5s ease-in-out infinite;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transform: translateY(-3px);
         }
 
         .profile-card {
-            background: linear-gradient(135deg,
-                rgba(255, 0, 110, 0.15),
-                rgba(131, 56, 236, 0.15),
-                rgba(58, 134, 255, 0.15),
-                rgba(6, 255, 165, 0.15));
-            border-radius: 25px;
-            padding: 2.5rem;
-            border: 3px dashed rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            box-shadow: 0 0 40px rgba(255, 0, 200, 0.3),
-                        0 0 80px rgba(51, 56, 236, 0.2),
-                        inset 0 0 30px rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 2px solid #e0e7ff;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
         }
 
         .stChatMessage {
             background: white !important;
-            border-radius: 18px !important;
-            padding: 1.5rem !important;
-            border-left: 6px solid;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
-                        0 0 30px rgba(255, 100, 200, 0.2) !important;
-            border: 2px solid rgba(255, 100, 200, 0.2) !important;
-            margin-bottom: 1.5rem;
-            animation: float 3s ease-in-out infinite;
+            border-radius: 12px !important;
+            padding: 1.2rem !important;
+            border-left: 5px solid #6366f1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+            margin-bottom: 1rem;
         }
 
         [data-testid="stChatMessageContent"] {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: #1a1a1a;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #1f2937 !important;
         }
 
         .stExpander {
-            border-radius: 18px !important;
-            border: 3px solid rgba(255, 100, 200, 0.4) !important;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 200, 0.9)) !important;
-            box-shadow: 0 0 20px rgba(255, 100, 200, 0.2) !important;
+            border-radius: 12px !important;
+            border: 2px solid #e0e7ff !important;
+            background-color: #f8f9ff !important;
         }
 
         .stExpander>div>button {
-            color: #ff006e !important;
-            font-weight: 700 !important;
-            font-size: 1.1rem !important;
+            color: #6366f1 !important;
+            font-weight: 600 !important;
         }
 
         .stDivider {
-            margin: 2.5rem 0 !important;
-            border-top: 3px dashed rgba(255, 255, 255, 0.4) !important;
+            margin: 2rem 0 !important;
+            border-top: 2px solid rgba(99, 102, 241, 0.15) !important;
         }
 
         .stImage {
-            border-radius: 20px !important;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2),
-                        0 0 40px rgba(255, 0, 200, 0.4) !important;
+            border-radius: 12px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
             overflow: hidden;
-            border: 3px solid rgba(255, 255, 255, 0.5) !important;
         }
 
         .search-section {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 250, 240, 0.95));
-            border-radius: 25px;
-            padding: 2rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2),
-                        0 0 40px rgba(255, 0, 200, 0.25);
-            margin-bottom: 2rem;
-            border: 3px solid rgba(255, 100, 200, 0.3);
-            backdrop-filter: blur(15px);
-        }
-
-        [data-testid="stSpinner"] {
-            color: #ff006e !important;
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            border: 1px solid #f0f0f0;
         }
 
         .stChatInput>div>div>input {
-            border-radius: 15px !important;
-            border: 3px solid rgba(255, 100, 200, 0.6) !important;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 250, 240, 0.98)) !important;
-            box-shadow: 0 0 20px rgba(255, 100, 200, 0.2) !important;
+            border-radius: 10px !important;
+            border: 2px solid #e0e7ff !important;
+            background: white !important;
+            color: #1f2937 !important;
         }
 
         .stChatInput>div>div>input:focus {
-            border-color: #06ffa5 !important;
-            box-shadow: 0 0 40px rgba(6, 255, 165, 0.5),
-                        0 0 80px rgba(255, 0, 200, 0.3) !important;
+            border-color: #6366f1 !important;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+        }
+
+        p, span, div, label {
+            color: #2d3748 !important;
         }
     </style>
 """
 
 st.markdown(custom_css, unsafe_allow_html=True)
 
-st.title("💬 🌈 캐릭터 대화 앱 ✨")
+st.title("💬 캐릭터 대화 앱")
 
 if "character" not in st.session_state:
     st.session_state.character = None
@@ -273,7 +205,7 @@ if "user_name" not in st.session_state:
     st.session_state.user_name = None
 
 st.markdown('<div class="search-section">', unsafe_allow_html=True)
-st.markdown("### 🎬 🌟 캐릭터 선택 ⭐")
+st.markdown("### 🎬 캐릭터 선택")
 
 col1, col2, col3 = st.columns([1.8, 1.8, 1])
 
@@ -296,7 +228,7 @@ with col2:
 
 with col3:
     st.write("")
-    search_btn = st.button("🔍 ✨ 검색", use_container_width=True, type="primary")
+    search_btn = st.button("🔍 검색", use_container_width=True, type="primary")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -306,14 +238,14 @@ if search_btn:
     elif not character_input:
         st.error("💭 캐릭터 이름을 입력해주세요!")
     elif st.session_state.character != character_input:
-        with st.spinner(f"✨ 🔮 '{character_input}' 정보와 사진을 검색 중입니다..."):
+        with st.spinner(f"🔍 '{character_input}' 정보와 사진을 검색 중입니다..."):
             character_info = search_character(character_input)
             character_image = search_character_image(character_input)
             st.session_state.character = character_input
             st.session_state.character_info = character_info
             st.session_state.character_image = character_image
             st.session_state.messages = []
-        st.success(f"🎉 🌈 '{character_input}'을(를) 불러왔습니다! ✨")
+        st.success(f"✨ '{character_input}'을(를) 불러왔습니다!")
 
 st.divider()
 
@@ -325,13 +257,13 @@ if st.session_state.character:
         if st.session_state.character_image:
             st.image(st.session_state.character_image, use_container_width=True)
         else:
-            st.info("📸 ✨ 사진을 찾을 수 없습니다.")
+            st.info("📸 사진을 찾을 수 없습니다.")
         st.markdown('</div>', unsafe_allow_html=True)
 
     with col_profile_info:
         st.markdown('<div class="profile-card">', unsafe_allow_html=True)
-        st.markdown(f"### 🎭 ⭐ {st.session_state.character} ⭐")
-        with st.expander("📖 🌟 캐릭터 정보", expanded=False):
+        st.markdown(f"### 🎭 {st.session_state.character}")
+        with st.expander("📖 캐릭터 정보", expanded=False):
             st.markdown(st.session_state.character_info)
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -339,13 +271,13 @@ if st.session_state.character:
         st.markdown("---")
         col_start1, col_start2 = st.columns(2)
         with col_start1:
-            if st.button("💬 🚀 먼저 말걸기 ✨", use_container_width=True, type="primary"):
+            if st.button("💬 먼저 말걸기", use_container_width=True, type="primary"):
                 st.session_state.messages = []
-                st.info("💡 🎯 메시지를 입력해서 대화를 시작해주세요! ⭐")
+                st.info("메시지를 입력해서 대화를 시작해주세요!")
 
         with col_start2:
-            if st.button("👋 🌟 먼저 말 받기 💫", use_container_width=True, type="primary"):
-                with st.spinner("✨ 🎭 캐릭터가 인사 중입니다..."):
+            if st.button("👋 먼저 말 받기", use_container_width=True, type="primary"):
+                with st.spinner("캐릭터가 인사 중입니다..."):
                     greeting_prompt = f"""당신은 '{st.session_state.character}'이고, 처음으로 누군가를 만났습니다.
 먼저 인사하고 자신을 소개하는 짧은 인사말을 해주세요. (2-3문장)
 자연스럽고 친근하게 말해주세요."""
@@ -361,7 +293,7 @@ if st.session_state.character:
                 st.rerun()
         st.divider()
 
-    st.markdown("### 💬 🌈 대화 ✨")
+    st.markdown("### 💬 대화")
 
     chat_container = st.container()
     with chat_container:
@@ -369,7 +301,7 @@ if st.session_state.character:
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
 
-    user_input = st.chat_input("💬 ✨ 메시지를 입력하세요...")
+    user_input = st.chat_input("메시지를 입력하세요...")
 
     if user_input:
         st.session_state.messages.append({"role": "user", "content": user_input})
@@ -377,7 +309,7 @@ if st.session_state.character:
         with st.chat_message("user"):
             st.markdown(user_input)
 
-        with st.spinner("🤔 💭 생각 중입니다..."):
+        with st.spinner("생각 중입니다..."):
             response = chat_with_character(
                 st.session_state.character,
                 st.session_state.character_info,
@@ -395,7 +327,7 @@ if st.session_state.character:
         col_save, col_clear = st.columns(2)
 
         with col_save:
-            if st.button("💾 ✨ 대화 저장 🌟", use_container_width=True):
+            if st.button("💾 대화 저장", use_container_width=True):
                 user_folder = f"conversations/{st.session_state.user_name}"
                 os.makedirs(user_folder, exist_ok=True)
 
@@ -413,12 +345,12 @@ if st.session_state.character:
                 with open(filename, "w", encoding="utf-8") as f:
                     json.dump(save_data, f, ensure_ascii=False, indent=2)
 
-                st.success(f"✅ 🎉 '{filename}'으로 저장되었습니다! ⭐")
+                st.success(f"✅ '{filename}'으로 저장되었습니다!")
 
         with col_clear:
-            if st.button("🔄 💫 대화 초기화 ✨", use_container_width=True):
+            if st.button("🔄 대화 초기화", use_container_width=True):
                 st.session_state.messages = []
                 st.rerun()
 
 else:
-    st.info("💡 ✨ 사용자 이름과 캐릭터를 입력한 후 검색 버튼을 눌러주세요! 🌟")
+    st.info("💡 사용자 이름과 캐릭터를 입력한 후 검색 버튼을 눌러주세요!")
