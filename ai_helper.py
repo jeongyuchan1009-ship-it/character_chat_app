@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 from anthropic import Anthropic
-from ddgs import DDGS
+from duckduckgo_search import DDGS
 
 load_dotenv()
 
